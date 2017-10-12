@@ -13,14 +13,8 @@ import com.kentoapps.assignment7.adapters.MovieAdapter
 import com.kentoapps.assignment7.models.DataSource
 import kotlinx.android.synthetic.main.fragment_recycler.*
 
-
-
-
-
-
-
-
 class RecyclerFragment : Fragment() {
+    private var isCreated = false
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,15 +24,17 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val linearLayoutManager = LinearLayoutManager(context)
         val dividerItemDecoration = DividerItemDecoration(recyclerView.context,
-                linearLayoutManager.orientation)
+                LinearLayoutManager(context).orientation)
         recyclerView.addItemDecoration(dividerItemDecoration)
 
         buttonLoad.setOnClickListener {
-            textEmpty.visibility = View.GONE
-            DataSource.instance.createFakeNews()
-            recyclerView.adapter = MovieAdapter(DataSource.instance.movies)
+            if (!isCreated) {
+                textEmpty.visibility = View.GONE
+                DataSource.instance.createFakeNews()
+                recyclerView.adapter = MovieAdapter(DataSource.instance.movies)
+                isCreated = true
+            }
         }
 
         buttonAdd.setOnClickListener {

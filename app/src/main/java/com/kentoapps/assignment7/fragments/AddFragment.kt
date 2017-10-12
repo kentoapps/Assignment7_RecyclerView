@@ -13,7 +13,6 @@ import com.kentoapps.assignment7.models.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import java.util.*
 
-
 class AddFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +27,10 @@ class AddFragment : Fragment() {
             val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
 
+            val cal = Calendar.getInstance()
+            cal.set(Calendar.YEAR, editDate.text.toString().toInt())
             DataSource.instance.addMovie(Movie(Profile("http://buzzshogun.com/wp-content/uploads/2016/09/7a2f6202b294be4068ea26abdcff2698-300x255.png", "LiLiCo"),
-                    Content(Date(), editBody.text.toString(), "http://www.unsungfilms.com/wp-content/uploads/2014/12/iris_04.jpg", "http://cassavafilms.com/wp-content/uploads/2013/01/iris.jpg"),
+                    Content(cal.time, editBody.text.toString(), "http://www.unsungfilms.com/wp-content/uploads/2014/12/iris_04.jpg", "http://cassavafilms.com/wp-content/uploads/2013/01/iris.jpg"),
                     Feedback(0, 0)))
             (targetFragment as RecyclerFragment).refresh()
             fragmentManager.popBackStack()

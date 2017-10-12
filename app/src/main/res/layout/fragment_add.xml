@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
-                android:clickable="true"
-                xmlns:tools="http://schemas.android.com/tools">
+                android:clickable="true">
 
     <ImageView
         android:id="@+id/image_author"
@@ -14,22 +14,25 @@
         android:scaleType="centerCrop"
         android:src="@drawable/lilico"/>
 
-    <TextView
-        android:id="@+id/text_date"
+    <EditText
+        android:id="@+id/editDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/image_author"
         android:layout_alignTop="@id/image_author"
-        android:layout_marginTop="16dp"
-        android:text="2017/9/26"/>
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/image_author"
+        android:inputType="number"
+        android:maxLength="4"
+        android:text="2017"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/text_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/image_author"
         android:layout_alignBottom="@id/image_author"
         android:layout_marginBottom="16dp"
+        android:layout_toRightOf="@id/image_author"
         android:text="by Steve Jobs"/>
 
     <LinearLayout
@@ -44,6 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/iris01"/>
 
         <ImageView
@@ -51,6 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/iris02"/>
 
     </LinearLayout>
